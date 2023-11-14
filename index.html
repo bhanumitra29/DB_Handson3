@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB Handson1</title>
+</head>
+<body>
+    <h2>Query the collection ""employee"" and list all the documents</h2>
+    <p>
+        const getAllEmployees = async (req, res) => {
+            const allemp = await employee.find();
+            console.log(allemp);
+            return res.send(allemp);
+        }
+    </p>
+
+
+    <h2>Query the collection ""employee"" and list the employees who are having salary more than 30000</h2>
+    <p>
+        const getHighSalaryEmployees = async (req, res) => {
+            const salemp = await employee.find({ "salary": { $gt: 30000 } });
+            console.log(salemp);
+            return res.send(salemp);
+        }
+          
+    </p>
+
+    <h2>Query the collection ""employee"" and list the employees who are having experience more than 2 years.</h2>
+    <p>
+        const getExperiencedEmployees = async (req, res) => {
+            const expemp = await employee.find({ "overallExp": { $gt: 2 } });
+            console.log(expemp);
+            return res.send(expemp);
+        }
+          
+
+    </p>
+
+    <h2>Query the collection ""employee"" and list the employees who are graduated after 2015 and having experience more than 1 year </h2>
+    <p>
+        const getRecentGraduatesWithExperience = async (req, res) => {
+            const grademp = await employee.find({ "yearGrad": { $gt: 2015 }, "overallExp": { $gt: 1 } });
+            console.log(grademp);
+            return res.send(grademp);
+        }
+          
+          
+    </p>
+
+
+    <h2>Query the collection ""employee"" and update the salary of the employee whose salary is greater than 70000 to 65000</h2>
+    <p>
+        const updateHighSalaryEmployees = async (req, res) => {
+            const salupdemp = await employee.updateMany({ "salary": { $gt: 70000 } }, { $set: { "salary": 65000 } });
+            console.log(salupdemp);
+            return res.send(salupdemp);
+        }
+          
+
+    </p>
+
+    <h2>Delete all the documents from ""employee"" where last company is Y"</h2>
+    <p>
+        const deleteEmployeesFromCompanyY = async (req, res) => {
+            const deleteyemp = await employee.deleteMany({ "lastCompany": "Y" });
+            console.log(deleteyemp);
+            return res.send(deleteyemp);
+        }
+          
+
+    </p>
+
+</body>
+</html>
